@@ -3,7 +3,7 @@ import { createAuthUserWithEmailAndPassword, createUserDocumentAuth } from "../.
 import FormInput from "../form-input/form-input.cpmponent"
 import Button from "../button/button.component";
 
-import "./sing-up-form.styles.scss"
+import "./sign-up-form.styles.scss"
 
 const defaultFormFields = {
     displayName: "",
@@ -12,7 +12,7 @@ const defaultFormFields = {
     confirmPassword: ""
 };
 
-const SingUpForm = () => {
+const SignUpForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { displayName, email, password, confirmPassword } = formFields;
 
@@ -43,9 +43,9 @@ const SingUpForm = () => {
     };
 
     return (
-        <div className="sing-up-container">
+        <div className="sign-up-container">
             <h2>Don't have a account?</h2>
-            <span>Sing Up with email and password</span>
+            <span>Sign Up with email and password</span>
             <form onSubmit={handleSubmit}>
                 <FormInput
                     label="Display Name"
@@ -81,11 +81,11 @@ const SingUpForm = () => {
                 />
 
                 <Button type="submit" >
-                    Sing Up
+                    Sign Up
                 </Button>
             </form>
         </div>
     );
 };
 
-export default SingUpForm;
+export default SignUpForm;

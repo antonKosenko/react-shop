@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { signInWithGooglePopup, createUserDocumentAuth, authUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
+import { signInWithGooglePopup, authUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.cpmponent"
 import Button from "../button/button.component";
 
-import "./sing-in-form.styles.scss"
+import "./sign-in-form.styles.scss"
 
 const defaultFormFields = {
     email: "",
@@ -12,12 +12,11 @@ const defaultFormFields = {
 
 
 
-const SingInForm = () => {
+const SignInForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { email, password } = formFields;
-
-    const singInWithGoogle = async () => {
-        const { user } = await signInWithGooglePopup();
+    const signInWithGoogle = async () => {
+        await signInWithGooglePopup();
     };
 
     const handleChange = (event) => {
@@ -33,7 +32,8 @@ const SingInForm = () => {
         event.preventDefault();
 
         try {
-            const response = await authUserWithEmailAndPassword(email, password)
+            await authUserWithEmailAndPassword(email, password);
+           // setCurrentUser(user);
             resetFormFields();
         } catch (error) {
             alert("incorrect email/password");
@@ -42,9 +42,9 @@ const SingInForm = () => {
     };
 
     return (
-        <div className="sing-up-container">
+        <div className="sign-up-container">
             <h2> Have a account?</h2>
-            <span>Sing In with email and password</span>
+            <span>Sign In with email and password</span>
             <form onSubmit={handleSubmit}>
                 <FormInput
                     label="Email"
@@ -64,10 +64,10 @@ const SingInForm = () => {
                 />
                 <div className="buttons-container">
                     <Button type="submit" >
-                        Sing In
+                        Sign In
                     </Button>
-                    <Button type="button" buttonType="google" onClick={singInWithGoogle} >
-                        Google Sing In
+                    <Button type="button" buttonType="google" onClick={signInWithGoogle} >
+                        Google Sign In
                     </Button>
                 </div>
             </form>
@@ -75,4 +75,4 @@ const SingInForm = () => {
     );
 };
 
-export default SingInForm;
+export default SignInForm;
