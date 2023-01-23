@@ -19,7 +19,7 @@ export const BaseButton = styled.button`
   justify-content: center;
 
     &:hover {
-    background - color: white;
+    background-color: white;
     color: black;
     border: 1px solid black;
   }
